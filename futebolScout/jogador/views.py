@@ -1,14 +1,11 @@
 from rest_framework import viewsets
 from .models import Jogador
 from .serializers import JogadorSerializer
-from django.shortcuts import render
-from accounts.views import isGestor
-from clube.models import Clube
-from federacao.models import Federacao
-from campeonato.models import Campeonato
-
-
+from .permissions import IsAuthenticatedWithJWT
 class JogadorViewSet(viewsets.ModelViewSet):
+
+    permission_classes = [IsAuthenticatedWithJWT]
+
     queryset = Jogador.objects.all()
     serializer_class = JogadorSerializer
 

@@ -1,3 +1,15 @@
+from rest_framework import viewsets
+from .models import Clube
+from .serializers import ClubeSerializer
+from .permissions import IsAuthenticatedWithJWT
+class ClubeViewSet(viewsets.ModelViewSet):
+    
+    permission_classes = [IsAuthenticatedWithJWT]
+    
+    queryset = Clube.objects.all()
+    serializer_class = ClubeSerializer
+
+'''
 from django.shortcuts import render, get_object_or_404
 from .forms import ClubeCreaterForm
 from django.http import HttpResponseRedirect
@@ -90,4 +102,5 @@ def deleteClube(request, id):
         except Clube.DoesNotExist:
             return HttpResponseRedirect('/clube/', {'error': 'Clube não encontrado'})
     else: 
-        return HttpResponseRedirect(f'/clube/detail/{id}')
+        return HttpResponseRedirect(f'/clube/detail/{id}')'
+'''

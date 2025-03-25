@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     #outrosApps
     'crispy_forms',
     'crispy_bootstrap5',
-    'rest_framework',
     'rest_framework.authtoken',
     'django_extensions',
     'rest_framework',
@@ -59,7 +58,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
-    'DEFAULT_PERMISSION_CLASSES': []
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
 }
 
 MIDDLEWARE = [
